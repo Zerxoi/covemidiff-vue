@@ -21,10 +21,6 @@ const routes = [
       }
     ]
   },
-  {
-    path: "/diff/:taskId/:method",
-    name: "diffTask"
-  }
 ]
 
 const router = new VueRouter({
