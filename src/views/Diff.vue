@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-tabs
+      v-if="diffTabs.length"
       v-model="activeTabName"
       type="card"
       closable
-      @tab-click="handleClick"
       @tab-remove="handleRemove"
     >
       <el-tab-pane
@@ -13,15 +13,15 @@
         :label="diff.title"
         :name="diff.name"
       >
-        <keep-alive>
-          <router-view />
-        </keep-alive>
+        <diff-tab :tab-name="diff.name" />
       </el-tab-pane>
     </el-tabs>
+    <el-empty v-else description="无标签"></el-empty>
   </div>
 </template>
 
 <script>
+import DiffTab from "./DiffTab.vue";
 export default {
   name: "Diff",
   computed: {
@@ -59,6 +59,9 @@ export default {
       this.activeTabName = activeName;
       this.diffTabs = tabs.filter((tab) => tab.name !== targetName);
     },
+  },
+  components: {
+    DiffTab,
   },
 };
 </script>

@@ -13,13 +13,10 @@ export default {
       tab: null,
     };
   },
+  props: {
+    tabName: String,
+  },
   computed: {
-    taskId() {
-      return this.$route.params.taskId;
-    },
-    method() {
-      return this.$route.params.method;
-    },
     diffTabs: {
       get() {
         return this.$store.state.diffTabs;
@@ -28,10 +25,17 @@ export default {
         this.$store.commit("updateDiffTabs", val);
       },
     },
+    activeTabName: {
+      get() {
+        return this.$store.state.activeTabName;
+      },
+      set(val) {
+        this.$store.commit("updateActiveTabName", val);
+      },
+    },
   },
   created() {
-    let tabName = this.taskId + "-" + this.method;
-    this.tab = this.diffTabs.find((tab) => tab.name === tabName);
+    this.tab = this.diffTabs.find((tab) => tab.name === this.tabName);
   },
 };
 </script>

@@ -109,8 +109,7 @@ export default {
       }
       this.activeTabName = tabName;
       this.$router.push({
-        name: "diffTab",
-        params: { taskId: emi.taskId, method: emi.method },
+        name: "diff",
       });
     },
     emiMethod(code) {
@@ -127,9 +126,6 @@ export default {
 </script>
 
 <style>
-.el-form {
-  margin-top: 20px;
-}
 .el-col {
   margin-bottom: 20px;
 }

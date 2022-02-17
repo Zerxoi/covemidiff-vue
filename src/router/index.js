@@ -12,14 +12,7 @@ const routes = [
   {
     path: '/diff',
     name: 'diff',
-    component: () => import("../views/Diff"),
-    children: [
-      {
-        path: "/:taskId/:method",
-        name: "diffTab",
-        component: () => import("../views/DiffTab")
-      }
-    ]
+    component: () => import("../views/Diff")
   },
 ]
 
