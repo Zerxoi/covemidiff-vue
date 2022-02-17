@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar></NavBar>
+    <NavBar />
     <keep-alive>
       <router-view />
     </keep-alive>
@@ -18,4 +18,3 @@ export default {
   },
 };
 </script>
-
