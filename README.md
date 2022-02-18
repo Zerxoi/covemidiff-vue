@@ -1,5 +1,7 @@
 # covemidiff-vue
 
+CovEMIDiff 前端展示项目
+
 ## Project setup
 ```
 npm install

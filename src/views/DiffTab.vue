@@ -55,11 +55,12 @@ export default {
   methods: {
     insertReason() {
       this.buttonDisabled = true;
-      let bodies = document.getElementsByClassName("d2h-diff-tbody");
+      let pane = document.getElementById("pane-" + this.tabName);
+      let bodies = pane.getElementsByClassName("d2h-diff-tbody");
       let gcovBody = bodies[0];
       let llvmcovBody = bodies[1];
-      let gcovLines = bodies[0].children;
-      let llvmcovLines = bodies[1].children;
+      let gcovLines = gcovBody.children;
+      let llvmcovLines = llvmcovBody.children;
       this.insertReasonInner(
         gcovBody,
         llvmcovBody,
@@ -84,6 +85,9 @@ export default {
       }
       for (let i = 0; i < lines.length; i++) {
         let line = lines[i];
+        if (this.diffIndex >= this.diffs.length) {
+          return;
+        }
         if (
           line.children.length > 0 &&
           parseInt(line.children[0].innerText) ===
@@ -91,9 +95,6 @@ export default {
         ) {
           let diff = this.diffs[this.diffIndex];
           this.diffIndex++;
-          if (this.diffIndex >= this.diffs.length) {
-            return;
-          }
           let gcovTr = document.createElement("tr");
           let llvmcovTr = document.createElement("tr");
           let numTd = document.createElement("td");
